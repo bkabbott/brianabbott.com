@@ -443,6 +443,160 @@ ul {
     }
 }
 
+/*██████╗░██████╗░░█████╗░░░░░░██╗███████╗░█████╗░████████╗░██████╗*/
+/*██╔══██╗██╔══██╗██╔══██╗░░░░░██║██╔════╝██╔══██╗╚══██╔══╝██╔════╝*/
+/*██████╔╝██████╔╝██║░░██║░░░░░██║█████╗░░██║░░██║░░░██║░░░╚█████╗░*/
+/*██╔═══╝░██╔══██╗██║░░██║██╗░░██║██╔══╝░░██║░░██║░░░██║░░░░╚═══██╗*/
+/*██║░░░░░██║░░██║╚█████╔╝╚█████╔╝███████╗╚█████╔╝░░░██║░░░██████╔╝*/
+/*╚═╝░░░░░╚═╝░░╚═╝░╚════╝░░╚════╝░╚══════╝░╚════╝░░░░╚═╝░░░╚═════╝░*/
+
+/******************************************************************
+ * Projects Page - All Screen Sizes
+ *****************************************************************/
+
+.main-projects {
+    background-color: var(--white);
+    width: inherit;
+    margin: 0 auto;
+    border-radius: 14px;
+}
+
+.projects-title {
+    color: var(--dark-blue);
+    font-weight: 600;
+    border-bottom: solid 2px var(--baby-blue);
+    padding-bottom: 20px;
+}
+
+.project-card {
+    border-bottom: solid 1px var(--baby-blue);
+    padding-bottom: 30px;
+    margin-bottom: 10px;
+}
+
+.project-card:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.project-name {
+    color: var(--dark-blue);
+    font-weight: 600;
+    margin-top: 30px;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.project-tag {
+    background-color: var(--baby-blue);
+    color: var(--dark-blue);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+.project-description {
+    color: var(--dark-blue);
+    font-weight: 200;
+}
+
+.project-details {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.project-details li {
+    color: var(--dark-blue);
+    font-weight: 200;
+    margin-top: 6px;
+}
+
+.project-details li strong {
+    font-weight: 600;
+}
+
+.project-details li a {
+    color: var(--light-blue);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.project-details li a:hover {
+    text-decoration: underline;
+}
+
+/******************************************************************
+ * Projects Page - Mobile Screens
+ *****************************************************************/
+
+@media screen and (max-width: 767px) {
+    .main-projects {
+        padding: 30px;
+    }
+
+    .projects-title {
+        font-size: 18px;
+    }
+
+    .project-name {
+        font-size: 14px;
+    }
+
+    .project-description {
+        font-size: 14px;
+    }
+
+    .project-details li {
+        font-size: 14px;
+    }
+}
+
+/******************************************************************
+ * Projects Page - Tablet Screens
+ *****************************************************************/
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    .main-projects {
+        padding: 50px;
+    }
+
+    .projects-title {
+        font-size: 24px;
+    }
+
+    .project-name {
+        font-size: 20px;
+    }
+}
+
+/******************************************************************
+ * Projects Page - Desktop Screens
+ *****************************************************************/
+
+@media screen and (min-width: 1200px) {
+    .main-projects {
+        padding: 80px;
+    }
+
+    .projects-title {
+        font-size: 42px;
+    }
+
+    .project-name {
+        font-size: 24px;
+    }
+
+    .project-description {
+        font-size: 20px;
+    }
+}
+
 
 
 
