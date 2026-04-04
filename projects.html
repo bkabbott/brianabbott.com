@@ -18,9 +18,7 @@
       <a class="hamburger-menu hamburger" href="#"><img class="hamburger" src="images/hamburger-menu.png" alt="toggle menu"></a>
       <div id="side-nav">
         <ul class="nav-flexbox-container">
-          <!--<li class="nav-item nav-item-inactive"><a href="https://blog.brianabbott.com">BLOG</a></li>
-          <li class="nav-item nav-item-inactive"><a href="https://brianabbott.com/resssume.pdf">RESUME</a></li>
-          <li class="nav-item nav-item-inactive"><a href="https://brianabbott.com/certifications.html">CERTIFICATIONS</a></li>-->
+          <!--<li class="nav-item nav-item-inactive"><a href="consulting.html">CONSULTING</a></li>-->
           <li class="nav-item nav-item-active"><a href="projects.html">PROJECTS</a></li>
         </ul>
       </div>
@@ -29,6 +27,26 @@
   </header>
   <main class="main-projects">
     <h1 class="projects-title">Projects</h1>
+
+    <div class="project-card">
+      <h2 class="project-name">Operator App (Android)</h2>
+      <span class="project-tags">
+        <span class="project-tag">Kotlin</span>
+        <span class="project-tag">Android</span>
+        <span class="project-tag">Amazon Textract</span>
+        <span class="project-tag">REST API</span>
+      </span>
+      <p class="project-description">
+        The native Android version of the Operator app, built alongside the iOS version being developed by the
+        lead developer. Uses Amazon Textract to extract values from handwritten daily worksheets via OCR.
+        Operators review extracted data using a swipe-card interface -s swiping right to approve correct values
+        or left to flag incorrect ones for manual entry.
+      </p>
+      <ul class="project-details">
+        <li><strong>Status:</strong> In Development</li>
+        <li><strong>Role:</strong> Android Developer</li>
+      </ul>
+    </div>
 
     <div class="project-card">
       <h2 class="project-name">Service Line Inventory</h2>
@@ -46,7 +64,7 @@
       </p>
       <ul class="project-details">
         <li><strong>Status:</strong> Live</li>
-        <li><strong>Role:</strong> Lead Developer</li>
+        <li><strong>Role:</strong> Developer</li>
       </ul>
     </div>
 
@@ -61,9 +79,11 @@
         A custom WordPress theme and plugins for the utility's public-facing website. The theme is a hybrid
         approach, combining classic PHP templating with block editor support. A plugin currently in development
         uses WordPress Cron to cache service territory boundaries from the Aqua Certify backend, which will
-        render interactive maps and provide more granular information to customers.
+        render interactive maps and provide more granular information to customers. I received Figma designs from UX,
+        and coded the HTML / CSS to match the designs.
       </p>
       <ul class="project-details">
+        <li><strong>Timeframe:</strong> Summer 2026 - Present</li>
         <li><strong>Status:</strong> Live</li>
         <li><strong>Role:</strong> Solo Developer</li>
         <li><strong>Link:</strong> <a href="https://consolidatedutilities.com" target="_blank">consolidatedutilities.com</a></li>
@@ -83,8 +103,9 @@
         it with a healthy one. 
       </p>
       <ul class="project-details">
+        <li><strong>Timeframe:</strong> Summer 2020 - Present</li>
         <li><strong>Status:</strong> Live</li>
-        <li><strong>Role:</strong> Developer</li>
+        <li><strong>Role:</strong> Solo Developer</li>
         <li><strong>Link:</strong> <a href="https://aquacertify.com" target="_blank">aquacertify.com</a></li>
       </ul>
     </div>
@@ -101,9 +122,11 @@
         provides <a href="https://baseform.com/np4/home">Baseform</a> with well data not available through
         SCADA. Generates EPD compliance reports as Excel spreadsheets using the Excel4Node module. Also
         calculates service territory boundaries and provides them to the utility website for rendering
-        interactive polygons on Google Maps. The database is normalized to third normal form.
+        interactive polygons on Google Maps. The database is normalized to third normal form. The API will be rewritten
+        using Nest with TypeScript or Spring with Kotlin.
       </p>
       <ul class="project-details">
+        <li><strong>Timeframe:</strong> Summer 2020 - Present (Will be deprecated)</li>
         <li><strong>Status:</strong> In Development</li>
         <li><strong>Role:</strong> Developer</li>
         <li><strong>Link:</strong> <a href="https://aquacertify.com" target="_blank">aquacertify.com</a></li>
@@ -125,8 +148,9 @@
         version is currently being built by another developer.
       </p>
       <ul class="project-details">
+        <li><strong>Timeframe:</strong> February 2021</li>
         <li><strong>Status:</strong> Live (Redesign In Progress)</li>
-        <li><strong>Role:</strong> Lead Developer (Prototype)</li>
+        <li><strong>Role:</strong> Developer (Prototype)</li>
         <li><strong>Link:</strong> <a href="https://aquacertify.com" target="_blank">aquacertify.com</a></li>
       </ul>
     </div>
@@ -139,10 +163,12 @@
         <span class="project-tag">REST API</span>
       </span>
       <p class="project-description">
-        An Android application for field operators to log well and lift station readings. Includes an offline mode and
-        uses background tasks (WorkManager) to sync data between the backend and the client.
+        An Android application for field operators to log well and lift station readings. The app is offline first, caching
+        all data using the SQLite Room ORM. The app displays completion status of wells, lift stations and the routes
+        that they belong to.
       </p>
       <ul class="project-details">
+        <li><strong>Timeframe:</strong> Summer 2020 - Present</li>
         <li><strong>Status:</strong> Live</li>
         <li><strong>Role:</strong> Lead Developer</li>
         <li><strong>Link:</strong> <a href="https://aquacertify.com" target="_blank">aquacertify.com</a></li>
@@ -162,6 +188,7 @@
         clean, minimal styling.
       </p>
       <ul class="project-details">
+        <li><strong>Timeframe:</strong> February 2022 - Present</li>
         <li><strong>Status:</strong> Live</li>
         <li><strong>Role:</strong> Personal Project</li>
         <li><strong>Link:</strong> <a href="https://github.com/bkabbott/brianabbott.com" target="_blank">GitHub</a></li>

@@ -597,6 +597,421 @@ ul {
     }
 }
 
+/*░█████╗░░█████╗░███╗░░██╗░██████╗██╗░░░██╗██╗░░░░░████████╗██╗███╗░░██╗░██████╗░*/
+/*██╔══██╗██╔══██╗████╗░██║██╔════╝██║░░░██║██║░░░░░╚══██╔══╝██║████╗░██║██╔════╝░*/
+/*██║░░╚═╝██║░░██║██╔██╗██║╚█████╗░██║░░░██║██║░░░░░░░░██║░░░██║██╔██╗██║██║░░██╗░*/
+/*██║░░██╗██║░░██║██║╚████║░╚═══██╗██║░░░██║██║░░░░░░░░██║░░░██║██║╚████║██║░░╚██╗*/
+/*╚█████╔╝╚█████╔╝██║░╚███║██████╔╝╚██████╔╝███████╗░░░██║░░░██║██║░╚███║╚██████╔╝*/
+/*░╚════╝░░╚════╝░╚═╝░░╚══╝╚═════╝░░╚═════╝░╚══════╝░░░╚═╝░░░╚═╝╚═╝░░╚══╝░╚═════╝░*/
+
+/******************************************************************
+ * Consulting Page - All Screen Sizes
+ *****************************************************************/
+
+.main-consulting,
+.main-service {
+    background-color: var(--white);
+    width: inherit;
+    margin: 0 auto;
+    border-radius: 14px;
+}
+
+/* Hero */
+
+.consulting-hero {
+    margin-bottom: 10px;
+}
+
+.consulting-title {
+    color: var(--dark-blue);
+    font-weight: 600;
+}
+
+.consulting-tagline {
+    color: var(--dark-blue);
+    font-weight: 200;
+    margin-top: 12px;
+    margin-bottom: 30px;
+}
+
+.consulting-cta {
+    display: inline-block;
+    background-color: var(--light-blue);
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.consulting-cta:hover {
+    background-color: var(--dark-blue);
+}
+
+/* Sections */
+
+.consulting-section h2 {
+    font-weight: 600;
+    color: var(--dark-blue);
+    margin-top: 40px;
+}
+
+.consulting-section p {
+    color: var(--dark-blue);
+    font-weight: 200;
+}
+
+/* Service Cards Grid */
+
+.services-grid {
+    display: grid;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.service-card {
+    display: block;
+    background-color: var(--baby-blue);
+    border-radius: 10px;
+    padding: 24px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.service-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.service-card h3 {
+    color: var(--dark-blue);
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.service-card p {
+    color: var(--dark-blue);
+    font-weight: 200;
+    margin: 0;
+}
+
+.service-card-link {
+    display: inline-block;
+    color: var(--light-blue);
+    font-weight: 600;
+    margin-top: 12px;
+}
+
+/* Steps */
+
+.steps {
+    margin-top: 24px;
+}
+
+.step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+
+.step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    background-color: var(--light-blue);
+    color: var(--white);
+    font-weight: 700;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.step-content h3 {
+    color: var(--dark-blue);
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.step-content p {
+    color: var(--dark-blue);
+    font-weight: 200;
+    margin: 0;
+}
+
+/* Contact List (shared with service pages) */
+
+.consulting-contact-list {
+    margin-top: 20px;
+}
+
+.consulting-contact-list li {
+    list-style: none;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-top: 13px;
+}
+
+.consulting-contact-list li img {
+    padding-right: 20px;
+}
+
+.consulting-contact-list li a {
+    color: var(--dark-blue);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.consulting-contact-list li a:hover {
+    text-decoration: underline;
+}
+
+/* Who This Is For / Why Work With Us */
+
+.consulting-section .highlight-text {
+    font-weight: 400;
+    color: var(--dark-blue);
+}
+
+/* Service Detail Pages */
+
+.service-back-link {
+    display: inline-block;
+    color: var(--light-blue);
+    font-weight: 600;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.service-back-link:hover {
+    text-decoration: underline;
+}
+
+.service-page-title {
+    color: var(--dark-blue);
+    font-weight: 600;
+}
+
+.service-page-intro {
+    color: var(--dark-blue);
+    font-weight: 200;
+}
+
+.service-detail-card {
+    background-color: var(--baby-blue);
+    border-radius: 10px;
+    padding: 24px;
+    margin-top: 16px;
+}
+
+.service-detail-card h3 {
+    color: var(--dark-blue);
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.service-detail-card p {
+    color: var(--dark-blue);
+    font-weight: 200;
+    margin: 0;
+}
+
+/******************************************************************
+ * Consulting Page - Mobile Screens
+ *****************************************************************/
+
+@media screen and (max-width: 767px) {
+    .main-consulting,
+    .main-service {
+        padding: 30px;
+    }
+
+    .consulting-title {
+        font-size: 20px;
+    }
+
+    .consulting-tagline {
+        font-size: 14px;
+    }
+
+    .consulting-cta {
+        font-size: 14px;
+        padding: 12px 24px;
+    }
+
+    .consulting-section h2 {
+        font-size: 14px;
+    }
+
+    .consulting-section p {
+        font-size: 14px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card h3 {
+        font-size: 14px;
+    }
+
+    .service-card p {
+        font-size: 13px;
+    }
+
+    .service-card-link {
+        font-size: 13px;
+    }
+
+    .step-number {
+        min-width: 32px;
+        height: 32px;
+        font-size: 14px;
+        margin-right: 14px;
+    }
+
+    .step-content h3 {
+        font-size: 14px;
+    }
+
+    .step-content p {
+        font-size: 13px;
+    }
+
+    .service-page-title {
+        font-size: 18px;
+    }
+
+    .service-page-intro {
+        font-size: 14px;
+    }
+
+    .service-detail-card h3 {
+        font-size: 14px;
+    }
+
+    .service-detail-card p {
+        font-size: 13px;
+    }
+
+    .service-back-link {
+        font-size: 13px;
+    }
+
+    .consulting-contact-list li img {
+        height: 30px;
+    }
+
+    .consulting-contact-list li a {
+        font-size: 12px;
+    }
+}
+
+/******************************************************************
+ * Consulting Page - Tablet Screens
+ *****************************************************************/
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    .main-consulting,
+    .main-service {
+        padding: 50px;
+    }
+
+    .consulting-title {
+        font-size: 28px;
+    }
+
+    .consulting-tagline {
+        font-size: 16px;
+    }
+
+    .consulting-cta {
+        font-size: 16px;
+        padding: 14px 28px;
+    }
+
+    .consulting-section h2 {
+        font-size: 24px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .service-page-title {
+        font-size: 28px;
+    }
+}
+
+/******************************************************************
+ * Consulting Page - Desktop Screens
+ *****************************************************************/
+
+@media screen and (min-width: 1200px) {
+    .main-consulting,
+    .main-service {
+        padding: 80px;
+    }
+
+    .consulting-title {
+        font-size: 42px;
+    }
+
+    .consulting-tagline {
+        font-size: 20px;
+    }
+
+    .consulting-cta {
+        font-size: 18px;
+        padding: 16px 32px;
+    }
+
+    .consulting-section h2 {
+        font-size: 24px;
+    }
+
+    .consulting-section p {
+        font-size: 20px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .service-card h3 {
+        font-size: 20px;
+    }
+
+    .service-card p {
+        font-size: 16px;
+    }
+
+    .step-content h3 {
+        font-size: 20px;
+    }
+
+    .step-content p {
+        font-size: 18px;
+    }
+
+    .service-page-title {
+        font-size: 42px;
+    }
+
+    .service-page-intro {
+        font-size: 20px;
+    }
+
+    .service-detail-card h3 {
+        font-size: 20px;
+    }
+
+    .service-detail-card p {
+        font-size: 18px;
+    }
+}
+
 
 
 
