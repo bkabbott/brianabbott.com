@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guitar Fretboard – Note Map</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: #f7f7f8;
+      color: #222;
+      margin: 0;
+      padding: 1.25rem 1rem;
+    }
+    .wrap { max-width: 480px; margin: 0 auto; }
+    h1 { font-size: 1.2rem; margin: 0 0 0.25rem; }
+    p.sub { margin: 0 0 1rem; color: #555; font-size: .92rem; }
+    .controls { margin: 0 0 1rem; font-size: .9rem; display: flex; flex-direction: column; gap: .5rem; }
+    .controls label { cursor: pointer; }
+    .controls .seg { display: flex; flex-wrap: wrap; gap: .25rem .9rem; align-items: center; }
+    .controls .seg > span { color: #555; }
+    .board { background: #fff; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,.08); padding: .75rem; }
+    svg { display: block; width: 100%; height: auto; }
+    .legend { display: flex; gap: 1rem; margin-top: .9rem; font-size: .85rem; color: #444; flex-wrap: wrap; }
+    .legend span { display: inline-flex; align-items: center; gap: .4rem; }
+    .dot { width: 14px; height: 14px; border-radius: 50%; display: inline-block; border: 1.5px solid #555; }
+    .dot.natural { background: #fff; }
+    .dot.acc { background: #d9dbe0; }
+    .dot.half { background: #ffb347; border-color: #b5651d; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Guitar Fretboard — Every Note, Frets 0–12</h1>
+  <p class="sub">Standard tuning (E A D G B E). Naturals are white, accidentals are gray. Orange marks where consecutive letters are only one fret apart: <strong>B → C</strong> and <strong>E → F</strong>.</p>
+
+  <div class="controls">
+    <label><input type="checkbox" id="showAcc" checked> Show accidentals</label>
+    <label><input type="checkbox" id="showHalf"> Highlight B–C / E–F half steps</label>
+    <div class="seg">
+      <span>Handedness:</span>
+      <label><input type="radio" name="hand" value="right" checked> Right-handed (low E left)</label>
+      <label><input type="radio" name="hand" value="left"> Left-handed (low E right)</label>
+    </div>
+    <div class="seg">
+      <span>Render accidentals as:</span>
+      <label><input type="radio" name="accMode" value="sharp" checked> Sharps (A#)</label>
+      <label><input type="radio" name="accMode" value="flat"> Flats (Bb)</label>
+      <label><input type="radio" name="accMode" value="both"> Both (A#/Bb)</label>
+    </div>
+  </div>
+
+  <div class="board"><svg id="fb" xmlns="http://www.w3.org/2000/svg"></svg></div>
+
+  <div class="legend">
+    <span><i class="dot natural"></i> Natural</span>
+    <span><i class="dot acc"></i> Accidental</span>
+    <span><i class="dot half"></i> B, C, E, F</span>
+  </div>
+</div>
+
+<script>
+  const NOTES = ["A","A#/Bb","B","C","C#/Db","D","D#/Eb","E","F","F#/Gb","G","G#/Ab"];
+  const TUNING = ["E","A","D","G","B","E"];      // low E (left) → high E (right)
+  const FRETS = 12;
+  const MARKERS = [3,5,7,9,12];
+  const HALF = new Set(["B","C","E","F"]);
+
+  // Vertical layout: nut at top, frets descend, strings are columns.
+  const LEFT = 58, STR_GAP = 58, NUT_Y = 76, FRET_H = 62, R = 17;
+  const BOARD_W = STR_GAP * 5 + 44;                // string span + margin
+  const BOARD_X = LEFT - 22;
+  const W = BOARD_X + BOARD_W + 12;
+  const H = NUT_Y + FRET_H * FRETS + 20;
+
+  const svg = document.getElementById("fb");
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+
+  const el = (t, a, txt) => {
+    const n = document.createElementNS("http://www.w3.org/2000/svg", t);
+    for (const k in a) n.setAttribute(k, a[k]);
+    if (txt !== undefined) n.textContent = txt;
+    svg.appendChild(n); return n;
+  };
+  const sx = s => LEFT + STR_GAP * s;                       // string x
+  const fy = f => f === 0 ? NUT_Y - 30 : NUT_Y + FRET_H * (f - 0.5); // note y
+
+  // fretboard wood
+  el("rect", { x: BOARD_X, y: NUT_Y, width: BOARD_W, height: FRET_H * FRETS, fill: "#5a3e2b", rx: 4 });
+  // nut
+  el("rect", { x: BOARD_X, y: NUT_Y - 8, width: BOARD_W, height: 8, fill: "#eee6d5", stroke: "#999" });
+  // fret wires
+  for (let f = 1; f <= FRETS; f++)
+    el("line", { x1: BOARD_X, y1: NUT_Y + FRET_H * f, x2: BOARD_X + BOARD_W, y2: NUT_Y + FRET_H * f, stroke: "#c9c9c9", "stroke-width": 3 });
+  // inlays
+  MARKERS.forEach(f => {
+    const cy = fy(f), cx = LEFT + STR_GAP * 2.5;
+    if (f === 12) { el("circle", { cx: LEFT + STR_GAP * 1.5, cy, r: 6, fill: "#e8dcc4", opacity: .7 }); el("circle", { cx: LEFT + STR_GAP * 3.5, cy, r: 6, fill: "#e8dcc4", opacity: .7 }); }
+    else el("circle", { cx, cy, r: 6, fill: "#e8dcc4", opacity: .7 });
+  });
+  // fret numbers (left gutter)
+  for (let f = 1; f <= FRETS; f++)
+    el("text", { x: BOARD_X - 6, y: fy(f) + 4, "text-anchor": "end", "font-size": 12, fill: "#666" }, f);
+  el("text", { x: BOARD_X - 6, y: fy(0) + 4, "text-anchor": "end", "font-size": 11, fill: "#666" }, "open");
+  // strings (thicker on the low side)
+  const stringLines = TUNING.map((_, s) =>
+    el("line", { y1: NUT_Y - 8, y2: NUT_Y + FRET_H * FRETS, stroke: "#ddd", "stroke-width": 3.5 - s * 0.5 })
+  );
+
+  // notes
+  const dots = [];
+  TUNING.forEach((open, s) => {
+    const idx = NOTES.indexOf(open);
+    for (let f = 0; f <= FRETS; f++) {
+      const name = NOTES[(idx + f) % 12];
+      const acc = name.includes("/");
+      const y = fy(f);
+      const g = el("g", {});
+      const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      c.setAttribute("cy", y); c.setAttribute("r", R);
+      c.setAttribute("stroke", "#555"); c.setAttribute("stroke-width", 1.5);
+      const t = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      t.setAttribute("text-anchor", "middle"); t.setAttribute("fill", "#222");
+      g.appendChild(c); g.appendChild(t);
+      dots.push({ g, c, t, s, y, name, acc, half: HALF.has(name) });
+    }
+  });
+
+  function label(d, mode) {
+    if (!d.acc) return d.name;
+    const [sharp, flat] = d.name.split("/");
+    return mode === "sharp" ? sharp : mode === "flat" ? flat : sharp + " " + flat;
+  }
+
+  function paint() {
+    const showAcc = document.getElementById("showAcc").checked;
+    const showHalf = document.getElementById("showHalf").checked;
+    const mode = document.querySelector('input[name="accMode"]:checked').value;
+    const lefty = document.querySelector('input[name="hand"]:checked').value === "left";
+    const col = s => lefty ? 5 - s : s;            // mirror string columns for left-handed
+    stringLines.forEach((ln, s) => { ln.setAttribute("x1", sx(col(s))); ln.setAttribute("x2", sx(col(s))); });
+    dots.forEach(d => {
+      const x = sx(col(d.s));
+      d.c.setAttribute("cx", x); d.t.setAttribute("x", x);
+      d.g.style.display = (!showAcc && d.acc) ? "none" : "";
+      const small = d.acc && mode === "both";
+      d.t.textContent = label(d, mode);
+      d.t.setAttribute("y", d.y + (small ? 3.5 : 5.5));
+      d.t.setAttribute("font-size", small ? 9 : d.acc ? 13 : 15);
+      d.t.setAttribute("font-weight", small ? 500 : 700);
+      if (d.half && showHalf) { d.c.setAttribute("fill", "#ffb347"); d.c.setAttribute("stroke", "#b5651d"); }
+      else { d.c.setAttribute("fill", d.acc ? "#d9dbe0" : "#fff"); d.c.setAttribute("stroke", "#555"); }
+    });
+  }
+  document.getElementById("showAcc").addEventListener("change", paint);
+  document.getElementById("showHalf").addEventListener("change", paint);
+  document.querySelectorAll('input[name="accMode"], input[name="hand"]').forEach(r => r.addEventListener("change", paint));
+  paint();
+</script>
+</body>
+</html>
